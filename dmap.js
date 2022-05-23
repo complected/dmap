@@ -47,11 +47,16 @@ lib.get = async (dmap, slot) => {
             dmap.provider.getStorageAt(dmap.address, nextslot)
         ]
     ).then(res => [meta, data] = res)
+    console.log(`lib.get(${slot}) => ${[meta, data]}`)
     return [meta, data]
 }
 
 lib.getByZoneAndName = async (dmap, zone, name) => {
-    const slot = keccak256(encodeZoneAndName(zone, name));
+    console.log(`\t\t\t lib.getByZoneAndName(${zone}, ${name})`)
+    const encoded = encodeZoneAndName(zone, name)
+    const hashed = keccak256(encoded)
+    console.log(`\t\t\t\t\t\t encoded: ${encoded}, hashed: ${hashed}`)
+    const slot = hashed;
     return lib.get(dmap, slot)
 }
 
