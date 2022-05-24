@@ -8,6 +8,9 @@ of immutability, while still allowing user-defined registry logic.
 This path format also has a concept of 'verify immutable',
 and the syntax is design to be discerned easily at a glance.
 
+READ: Does path have permission? 
+It shouldn't because "Locked entries can safely be cached, assuming that Ethereum's security properties hold.".
+
 ```
 :pack:rico.latest
           ^  warning, the value of this path is mutable, starting here
